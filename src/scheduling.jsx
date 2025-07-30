@@ -118,14 +118,20 @@ export default function TimezoneScheduler() {
         </tbody>
       </table>
 
-      {suggestedTime && (
+      {suggestedTime ? (
         <div style={{ marginTop: "1rem", backgroundColor: "#f0f8ff", padding: "1rem", borderRadius: "8px" }}>
           <strong>Suggested Common Time:</strong>{" "}
           {formatLocalTime(suggestedTime, Intl.DateTimeFormat().resolvedOptions().timeZone)} (Your Local Time)
           <br />
           <em>UTC: {suggestedTime.toISOString().replace("T", " ").slice(0, 16)}Z</em>
         </div>
-      )}
+      ) : ( 
+      <div style={{ marginTop: "1rem", backgroundColor: "#f0f8ff", padding: "1rem", borderRadius: "8px" }}>
+          <strong>Suggested Common Time:</strong>{" "}
+          <div>"There is no common time for the above participants"</div>
+          <br />
+          
+        </div>)}
     </div>
   );
 }
